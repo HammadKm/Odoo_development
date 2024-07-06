@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="inherited_customer_view_form" model="ir.ui.view">
+        <field name="name">inherited.customer.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[1]" position="after">
+                <page string="Sale orders">
+                    <field name="sale_order_ids"/>
+                </page>
+            </xpath>
+            <xpath expr="//div[@class='oe_button_box']">
+                <button name="action_product_count" string="Sold products"
+                        type="object" class="oe_stat_button">
+                        <field name="total_product_sold" string="Sold products" widget="statinfo"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+

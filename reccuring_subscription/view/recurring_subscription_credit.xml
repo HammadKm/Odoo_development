@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="action_recurring_subscription_credit"
+            model="ir.actions.act_window">
+        <field name="name">Subscription Credit</field>
+        <field name="res_model">recurring.subscription.credit</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="recurring_subscription_credit_tree" model="ir.ui.view">
+        <field name="name">recurring subscription</field>
+        <field name="model">recurring.subscription.credit</field>
+        <field name="arch" type="xml">
+            <tree string="recurring_subscription_credit_tree">
+                <field name="recurring_subscription_id" force_save="1"/>
+                <field name="partner_id"/>
+                <field name="due_date"/>
+                <field name="period_date"/>
+                <field name="create_date"/>
+                <field name="credit_amount"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="recurring_subscription_credit_form" model="ir.ui.view">
+        <field name="name">recurring subscription credit form</field>
+        <field name="model">recurring.subscription.credit</field>
+        <field name="arch" type="xml">
+            <form string="recurring_subscription_credit_form">
+                <header>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="pending,confirmed,first_approved,fully_approved,rejected"
+                           options="{'clickable': '1'}" groups="reccuring_subscription.recurring_subscription_manager"/>
+                </header>
+                <sheet>
+                    <field name="subscription_image" widget="image" class="oe_avatar"/>
+                    <group>
+                        <group>
+                            <field name="recurring_subscription_id"/>
+                            <field name="partner_id"/>
+                            <field name="subscription_amount"/>
+                            <field name="credit_amount"/>
+                        </group>
+                        <group>
+                            <field name="period_date"/>
+                            <field name="establishment"/>
+                            <field name="due_date"/>
+                            <field name="company_id"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+</odoo>

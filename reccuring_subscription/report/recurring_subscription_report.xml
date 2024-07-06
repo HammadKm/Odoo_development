@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="action_report_recurring_subscription" model="ir.actions.report">
+            <field name="name">Subscription Report</field>
+            <field name="model">recurring.subscription</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">reccuring_subscription.report_subscription</field>
+            <field name="report_file">reccuring_subscription.report_subscription</field>
+            <field name="binding_model_id" ref="reccuring_subscription.model_recurring_subscription"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

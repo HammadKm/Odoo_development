@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="web_tree_template">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <div class="header">
+                    <h3>Subscription History</h3>
+                    <div class="buttons">
+                        <div class="btn_create">
+                            <a class="btn btn-primary" href="/recurring">
+                                Create
+                            </a>
+                        </div>
+                        <div class="btn_create">
+                            <button class="btn btn-primary billing"
+                                    groups="reccuring_subscription.recurring_subscription_manager">
+                                Invoice
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <table class="subscription-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Product</th>
+                            <th>Date</th>
+                            <th>Customer</th>
+                            <th>Recurring Amount</th>
+                            <th>Credits</th>
+                            <th></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="record" t-as="rec">
+                            <tr t-att-value="rec['id']" data-checked="False">
+                                <td>
+                                    <input type="checkbox" class="checkbox"/>
+                                </td>
+                                <!--                                <td><span t-out="rec['id']"/></td>-->
+                                <td>
+                                    <span class="test_name"
+                                          t-out="rec['name']"/>
+                                </td>
+                                <td>
+                                    <span t-out="rec['product_id']['name']"/>
+                                </td>
+                                <td>
+                                    <span t-out="rec['date']"/>
+                                </td>
+                                <td>
+                                    <span t-out="rec['partner_id']['name']"/>
+                                </td>
+                                <td>
+                                    <span t-out="rec['recurring_amount']"/>
+                                </td>
+                                <td>
+                                    <span t-out="rec['max_credit']"/>
+                                </td>
+                                <td>
+                                    <button name="edit_btn" id="edit"
+                                            class="edit_btn">Edit
+                                    </button>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+            <form action="/edit/history" enctype="multipart/form-data"
+                  class="o_mark_required">
+                <input type="hidden" name="csrf_token"
+                       t-att-value="request.csrf_token()"/>
+                <div class="modal fade" id="editModalCenter" tabindex="-1"
+                     role="dialog" aria-labelledby="exampleModalCenterTitle"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered"
+                         role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title"
+                                    id="exampleModalLongTitle">Edit your
+                                    subscription
+                                </h5>
+                            </div>
+                            <div class="modal-body">
+                                <label class="col-form-label col-sm-auto s_website_form_label"
+                                       style="width: 200px" for="studio1">
+                                    <span class="s_website_form_label_content">
+                                        Name
+                                    </span>
+                                </label>
+                                <div class="col-sm">
+                                    <input id="name" type="text"
+                                           class="form-control s_website_form_input"
+                                           name="name"/>
+                                </div>
+                                <label class="col-form-label col-sm-auto s_website_form_label"
+                                       style="width: 200px" for="studio1">
+                                    <span class="s_website_form_label_content">
+                                        Product
+                                    </span>
+                                </label>
+                                <div class="col-sm">
+                                    <select id="products_test" name="product"
+                                            class="form-control s_website_form_input">
+                                    </select>
+                                </div>
+                                <!--                              <label class="col-form-label col-sm-auto s_website_form_label"-->
+                                <!--                                       style="width: 200px" for="studio1">-->
+                                <!--                                    <span class="s_website_form_label_content">-->
+                                <!--                                        ID-->
+                                <!--                                    </span>-->
+                                <!--                                </label>-->
+                                <div class="col-sm">
+                                    <input id="values" type="hidden"
+                                           class="form-control s_website_form_input"
+                                           name="ID"/>
+                                </div>
+
+                                <label class="col-form-label col-sm-auto s_website_form_label"
+                                       style="width: 200px" for="studio1">
+                                    <span class="s_website_form_label_content">
+                                        Date
+                                    </span>
+                                </label>
+                                <div class="col-sm">
+                                    <input id="dates_test" type="date"
+                                           class="form-control s_website_form_input"
+                                           name="date"/>
+                                </div>
+                                <label class="col-form-label col-sm-auto s_website_form_label"
+                                       style="width: 200px" for="studio1">
+                                    <span class="s_website_form_label_content">
+                                        Recurring Amount
+                                    </span>
+                                </label>
+                                <div class="col-sm">
+                                    <input id="recurring_amounts" type="text"
+                                           class="form-control s_website_form_input"
+                                           name="recurring amount"/>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close
+                                </button>
+                                <button type="submit" class="btn btn-primary"
+                                        name="btn_create">Update
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </t>
+    </template>
+</odoo>

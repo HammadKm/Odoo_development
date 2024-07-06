@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="inherited_partner_view_form" model="ir.ui.view">
+        <field name="name">inherited.partner.account.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='function']" position="after">
+                <field name="account_id"/>
+                <field name="establishment"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

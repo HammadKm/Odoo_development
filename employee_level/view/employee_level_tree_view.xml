@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="action_employee_level" model="ir.actions.act_window">
+        <field name="name">Employee Level</field>
+        <field name="res_model">employee.level</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <record id="employee_level_info_tree" model="ir.ui.view">
+        <field name="name">employee.level.info</field>
+        <field name="model">employee.level</field>
+        <field name="arch" type="xml">
+            <tree string="employee_level_tree" editable="bottom" create="1" edit="1">
+                <field name="emp_level"/>
+                <field name="salary"/>
+                <field name="highest_level"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

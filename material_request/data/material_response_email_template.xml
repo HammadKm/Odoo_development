@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <!--Template to send demo mail template for the customer-->
+        <record id="material_mail_template" model="mail.template">
+            <field name="name">Email Template For material request</field>
+            <field name="model_id" ref="material_request.model_material_request"/>
+            <field name="email_from">{{ object.company_id.email }}</field>
+            <field name="email_to">{{object.employee_id.email}}</field>
+            <field name="subject">Material request Response Mail</field>
+            <field name="body_html" type="html">
+                <p>
+                    Dear <t t-out="object.employee_id.name"/>,
+                    <br/>
+                    <br/>
+                    Good job, your request <t t-out="object.reference_no"/> for the materials
+                     is successfully submitted,
+                    <br/>
+                    <br/>
+                    your request details :
+                    <br/>
+                    <table border="2">
+                        <thead>
+                            <tr>
+                                <th>Materials</th>
+                                <th>Quantity</th>
+                                <th>Operation</th>
+                                <th>Source Location</th>
+                                <th>Destination Location</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="object.material_order_ids" t-as="mt">
+                                <td><span t-out="mt.product_id.name"/> </td>
+                                <td><span t-out="mt.material_qty"/></td>
+                                <td><span t-out="mt.operation_type"/> </td>
+                                <t t-if="mt.operation_type == 'internal transfer'">
+                                <td><span t-out="mt.src_location_id.name"/> </td>
+                                <td><span t-out="mt.dest_location_id.name"/> </td>
+                                </t>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <br/>
+
+                    Regards,
+                </p>
+                <br/>
+                <t t-out="object.company_id.name"/>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="subscription_credit_snippet"
+              name="Subscription Credit Snippet">
+        <section class="container dynamic_snippet_blog">
+            <div class="ref-arrival-content snippet">
+                <p class="ref-section_head ref-centerhead__underline ref-head--primary"
+                   style="color: #0d5272;"><h2>Recurring Subscription Credit</h2>
+                </p>
+            </div>
+            <div id="top_products_carousel"/>
+        </section>
+    </template>
+
+    <template id="basic_snippet" inherit_id="website.snippets"
+              name="Subscription Credit Snippet">
+        <xpath expr="//div[@id='snippet_effect']//t[@t-snippet][last()]"
+               position="after">
+            <t t-snippet="reccuring_subscription.subscription_credit_snippet"/>
+        </xpath>
+    </template>
+</odoo>

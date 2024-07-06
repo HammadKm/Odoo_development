@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data noupdate="1">
+    <record id="material_request_sequence" model="ir.sequence">
+      <field name="name">material request Sequence</field>
+      <field name="code">material.request</field>
+      <field name="prefix">MRQ</field>
+      <field name="padding">10</field>
+    </record>
+  </data>
+</odoo>

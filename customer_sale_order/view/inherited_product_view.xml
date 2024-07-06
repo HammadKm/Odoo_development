@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_form_inherit" model="ir.ui.view">
+      <field name="name">product.template.form.inherit</field>
+      <field name="model">product.template</field>
+      <field name="inherit_id" ref="product.product_template_only_form_view"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='default_code']" position="before">
+          <field name="total_sale_count" readonly="1" string="Total Sale Count"/>
+        </xpath>
+      </field>
+    </record>
+</odoo>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_employee_level_form" model="ir.ui.view">
+        <field name="name">employee.level.view.form.inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='job_id']" position="after">
+                <field name="emp_level_id" string="Level"/>
+                <field name="salary" string="Salary"/>
+<!--                <field name="h_level" string="Top"/>-->
+            </xpath>
+            <xpath expr="//header" position="inside">
+                <button name="promote_salary_btn" string="Promote"
+                        type="object" invisible="h_level == True"/>
+            </xpath>
+
+        </field>
+    </record>
+    <menuitem id="employee_level_menu" name="Employee Level"
+              action="action_employee_level"
+              parent="hr.menu_human_resources_configuration" sequence="5"/>
+</odoo>

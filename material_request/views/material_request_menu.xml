@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem id="material_request_root" name="Material Request">
+        <menuitem id="first_level_menu" name="Request">
+            <menuitem id="material_request_menu" name="All Request" action="action_material_request"/>
+            <menuitem id="material_request_submitted" name="Submitted Request" action="action_material_request_submitted" groups="material_request.material_request_manager"/>
+            <menuitem id="material_request_first_approved" name="To Approve" action="action_material_request_approved" groups="material_request.material_request_head"/>
+<!--            <menuitem id="material_request_fully_approved" name="Approved" action="action_material_request_fully_approved"/>-->
+        </menuitem>
+    </menuitem>
+</odoo>

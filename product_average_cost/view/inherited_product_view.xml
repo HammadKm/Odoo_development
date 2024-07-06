@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="inherited_product_view_form" model="ir.ui.view">
+        <field name="name">inherited.product.avg.cost.form</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='default_code']" position="before">
+                <field name="average_cost" string="Average Cost"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

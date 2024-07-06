@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem id="recurring_subscription_root" name="Recurring Subscription">
+        <menuitem id="recurring_level_menu" name="Subscription">
+            <menuitem id="recurring_subscription_menu" name="Subscription"
+                      action="action_recurring_subscription"/>
+        </menuitem>
+        <menuitem id="recurring_credit_level_menu" name="Credit">
+            <menuitem id="recurring_subscription_credit_menu" name="Subscription
+             Credit" action="action_recurring_subscription_credit"/>
+        </menuitem>
+        <menuitem id="billing_schedule_menu" name="Billing Schedule">
+            <menuitem id="billing_schedule_menu_item" name="Billing Schedule"
+                      action="action_billing_schedule"/>
+            <!--            <menuitem id="partner_account" name="Partner Account"-->
+            <!--                      action="action_partner_account"/>-->
+        </menuitem>
+        <menuitem id="recurring_subscription_report" name="Reporting">
+            <menuitem id="recurring_subscription_report_menu"
+                      name="Subscription report"
+                      action="action_subscription_report"/>
+            <menuitem id="recurring_subscription_credit_report"
+                      name="Credit Report" action="action_subscription_credit_report"/>
+        </menuitem>
+    </menuitem>
+</odoo>

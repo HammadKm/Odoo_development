@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="snippet_form_template">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <div class="container">
+                    <div class="header">
+                        <h3>Recurring Subscription</h3>
+                    </div>
+                    <form enctype="multipart/form-data"
+                          class="o_mark_required">
+                        <input type="hidden" name="csrf_token"
+                               t-att-value="request.csrf_token()"/>
+                        <t t-foreach ="record" t-as="recs">
+                            <div class="credits">
+                                <div class="s_website_form_rows row s_col_no_bgcolor form_row">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label"
+                                               style="width: 250px" for="studio1">
+                                            <span class="s_website_form_label_content"><b>
+                                                Name:
+                                            </b></span>
+        <!--                                    <span t-esc="sub"/>-->
+
+                                            <span t-out="recs['name']"/>
+                                        </label>
+                                    </div>
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label"
+                                               style="width: 250px" for="studio1">
+                                            <span class="s_website_form_label_content"><b>
+                                                Product:
+                                            </b></span>
+                                            <span t-out="recs['product_id']['name']"/>
+                                        </label>
+                                    </div>
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label"
+                                               style="width: 250px" for="studio1">
+                                            <span class="s_website_form_label_content"><b>
+                                                Customer:
+                                            </b></span>
+                                            <span t-out="recs['partner_id']['name']"/>
+                                        </label>
+                                    </div>
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label"
+                                               style="width: 250px" for="studio1">
+                                            <span class="s_website_form_label_content"><b>
+                                                Recurring Amount:</b>  <span t-out="recs['recurring_amount']"/>
+                                            </span>
+
+                                        </label>
+                                    </div>
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label"
+                                               style="width: 250px" for="studio1">
+                                            <span class="s_website_form_label_content"><b>
+                                                Date:</b>  <span t-out="recs['date']"/>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                    <img class="card-img-top" t-attf-src="data:image/png;base64,{{recs.subscription_image}}"
+                                         style="padding: 0px; margin: 0px; height: 160px; width:305px;"/>
+                            </div>
+                        </t>
+                    </form>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

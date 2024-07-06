@@ -1,0 +1,8 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_material_request_user,access_material_request_user,model_material_request,material_request.material_request_user,1,1,1,0
+access_material_request_manager,access_material_request_manager,model_material_request,material_request.material_request_manager,1,1,0,1
+access_material_request_head,access_material_request_head,model_material_request,material_request.material_request_head,1,1,0,1
+access_material_order_line,access_material_order_line,model_material_order_line,base.group_user,1,1,1,1
+
+
+

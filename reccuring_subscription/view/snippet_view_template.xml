@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="web_credits_template">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+            </div>
+        </t>
+    </template>
+</odoo>

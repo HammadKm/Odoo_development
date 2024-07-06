@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="action_recurring_subscription" model="ir.actions.act_window">
+        <field name="name">Recurring subscription</field>
+        <field name="res_model">recurring.subscription</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="recurring_subscription_tree" model="ir.ui.view">
+        <field name="name">recurring.subscription.info</field>
+        <field name="model">recurring.subscription</field>
+        <field name="arch" type="xml">
+            <tree string="recurring_subscription_tree">
+                <field name="name"/>
+                <field name="order_id"/>
+                <field name="establishment"/>
+                <field name="date"/>
+                <field name="due_date"/>
+                <field name="is_lead"/>
+                <field name="partner_id"/>
+                <field name="product_id"/>
+                <field name="recurring_amount"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="recurring_subscription_form" model="ir.ui.view">
+        <field name="name">recurring.subscription.form</field>
+        <field name="model">recurring.subscription</field>
+        <field name="arch" type="xml">
+            <form string="recurring_subscription_form">
+                <header>
+                    <button name="confirm_button" string="Confirm"
+                            class="oe_highlight"
+                            invisible="(state == 'confirm' or state == 'done')"
+                            type="object" groups="reccuring_subscription.recurring_subscription_manager"/>
+                    <button name="done_button" string="Done"
+                            class="oe_highlight"
+                            invisible="(state != 'confirm')" type="object" groups="reccuring_subscription.recurring_subscription_manager"/>
+                    <button name="cancel_button" string="Cancel"
+                            invisible="(state =='cancel')" type="object"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,confirm,done,cancel"/>
+                </header>
+                <sheet>
+                    <field name="subscription_image" widget="image" class="oe_avatar"/>
+                    <header>
+                        <h1>
+                            <field name="reference_no"/>
+                        </h1>
+                    </header>
+
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="order_id"/>
+                            <field name="date"/>
+                            <field name="product_id"/>
+                            <field name="is_lead"/>
+                            <field name="recurring_amount" required="1"/>
+                        </group>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="establishment"/>
+                            <field name="billing_schedule_id"/>
+                            <field name="due_date"/>
+                            <field name="next_billing"/>
+                            <field name="company_id"/>
+                            <field name="max_credit"/>
+                        </group>
+                        <notebook>
+                            <page string="Description">
+                                <group>
+                                    <field name="description"/>
+                                </group>
+                            </page>
+                            <page string="Credits">
+                                <field name="subscription_ids"/>
+                                <group class="oe_subtotal_footer" colspan="2"
+                                       name="total">
+                                    <field name="total" colspan="2"
+                                           readonly="1"/>
+                                </group>
+                            </page>
+                            <page string="Terms &amp; Conditions">
+                                <field name="terms_and_condition"/>
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="recurring_subscription_search" model="ir.ui.view">
+        <field name="name">recurring.subscription.search</field>
+        <field name="model">recurring.subscription</field>
+        <field name="arch" type="xml">
+            <search string="recurring_subscription_search">
+                <field name="name"/>
+                <field name="product_id"/>
+                <filter name="establishment" string="Establishment ID"
+                        domain="[('establishment','!=',False)]"/>
+                <group string="Group By">
+                    <filter name="product_id" string="Product"
+                            context="{'group_by':'product_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

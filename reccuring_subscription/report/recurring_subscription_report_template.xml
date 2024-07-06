@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="report_subscription">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <center>
+                    <h2>Subscription Report</h2>
+                    </center>
+                    <span t-if="period=='weekly'"><h5>Weekly Report</h5></span>
+                    <span t-if="period=='monthly'"><h5>Monthly Report</h5></span>
+                    <span t-if="period=='yearly'"><h5>Yearly Report</h5></span>
+                    <span t-if="period=='daily'"><h5>Daily Report</h5></span>
+                    <span>DATE :</span>
+                    <span t-out="print_date"/>
+                </div><br/>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Sl.no</th>
+                            <th>Date</th>
+                            <th>Name</th>
+                            <th>Customer</th>
+                            <th>Product</th>
+                            <th>Amount</th>
+                            <th>Total Credit Applied</th>
+                            <th>State</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="records" t-as="record">
+                            <tr>
+                                <td><span t-esc="record_index+1"/></td>
+                                <td><span t-out="record[6]"/></td>
+                                <td><span t-out="record[0]"/></td>
+                                <td><span t-out="record[4]"/></td>
+                                <td><span t-out="record[5]['en_US']"/></td>
+                                <td><span t-out="record[1]"/></td>
+                                <td><span t-out="record[2]"/></td>
+                                <td><span t-out="record[3]"/></td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+                <div>
+                    <h5>Terms and Conditions:</h5>
+                    <t t-foreach="terms" t-as="rec">
+                        <p t-if="terms and records and rec">
+                            <span t-esc="rec_index+1 "/>
+                            <span t-out="rec"/>
+                        </p>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

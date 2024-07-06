@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="recurring_subscription_report_wizard_view_form" model="ir.ui.view">
+        <field name="name">recurring.subscription.report.wizard.form</field>
+        <field name="model">recurring.subscription.report</field>
+        <field name="arch" type="xml">
+            <form string="Subscription Report">
+                <group>
+                    <group>
+                        <field name="subscription_ids" widget="many2many_tags"/>
+                        <field name="period"/>
+                    </group>
+                    <group invisible="period != 'custom'">
+                        <field name="from_date"/>
+                        <field name="to_date"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="action_subscription_report" string="Print PDF"
+                            type="object" class="oe_highlight"/>
+                    <button name="action_subscription_xsl_report" string="Print XLSX"
+                            type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+     <record id="action_subscription_report" model="ir.actions.act_window">
+        <field name="name">Recurring Subscription Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">recurring.subscription.report</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="recurring_subscription_report_wizard_view_form"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="action_estate" model="ir.actions.act_window">
+        <field name="name">Real Estate</field>
+        <field name="res_model">estate.property</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="estate_info_tree" model="ir.ui.view">
+        <field name="name">estate.info</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <tree string="estate_tree">
+                <field name="name"/>
+                <field name="postcode"/>
+                <field name="bedrooms"/>
+                <field name="living_area"/>
+                <field name="expected_price"/>
+                <field name="selling_price"/>
+                <field name="date_availability"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="estate_info_form" model="ir.ui.view">
+        <field name="name">estate.info.form</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <form string="estate_form">
+                <sheet>
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                    <group>
+                        <group>
+                            <field name="property_type"/>
+                            <field name="postcode"/>
+                            <field name="expected_price"/>
+                        </group>
+                        <group>
+                            <field name="selling_price"/>
+                            <field name="date_availability"/>
+                            <field name="tags_ids" string="Tags"
+                                   widget="many2many_tags"/>
+                        </group>
+                        <notebook>
+                            <page string="Description">
+                                <group>
+                                    <field name="description"/>
+                                    <field name="bedrooms"/>
+                                    <field name="living_area"/>
+                                    <field name="facades"/>
+                                    <field name="garage"/>
+                                    <field name="garden"/>
+                                    <field name="garden_area"/>
+                                    <field name="garden_orientation"/>
+                                    <field name="state"/>
+                                </group>
+                            </page>
+                            <page string="offers">
+                                <field name="offer_ids"/>
+                            </page>
+                            <page string="other info">
+                                <group>
+                                    <field name="buyer_id"/>
+                                    <field name="seller_id"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="estate_info_search" model="ir.ui.view">
+        <field name="name">estate.info.search</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <search string="estate_search">
+                <field name="name"/>
+                <field name="postcode"/>
+                <field name="bedrooms"/>
+                <field name="expected_price"/>
+                <field name="living_area"/>
+                <field name="facades"/>
+                <filter name="status" string="Available"
+                        domain="['|',('state', '=', 'new'),(
+                         'state','=','offer received')]"/>
+                <group expand="1" string="Group by">
+                    <filter name="postcode" string="Postcode"
+                            context="{'group_by':'postcode'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

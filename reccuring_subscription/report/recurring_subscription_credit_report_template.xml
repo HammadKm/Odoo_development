@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="report_subscription_credit">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <center>
+                    <h2>Subscription Credit Report</h2>
+                    </center>
+                    <span t-if="state">State : </span>
+                    <span t-if="state" t-out="records[0][1]"/>
+                    <span>DATE :</span>
+                    <span t-out="print_date"/>
+                </div><br/>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Sl.no</th>
+                            <th>Name</th>
+                            <th>Customer</th>
+                            <th>Total credit applied</th>
+                            <th>Amount pending</th>
+                            <th t-if="not state">State</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="records" t-as="record">
+                            <tr>
+                                <td><span t-esc="record_index+1"/></td>
+                                <td><span t-out="record[0]"/></td>
+                                <td><span t-out="record[3]"/></td>
+                                <td><span t-out="record[2]"/></td>
+                                <td><span t-out="record[4]-record[2]"/></td>
+                                <td t-if="not state"><span t-out="record[1]"/></td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </t>
+        </t>
+    </template>
+</odoo>

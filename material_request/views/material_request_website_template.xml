@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="web_machine_request_template">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <div class="container">
+                    <div class="header">
+                        <h3>Online Material Request</h3>
+                    </div>
+                    <form enctype="multipart/form-data"
+                          class="o_mark_required">
+                        <input type="hidden" name="csrf_token"
+                               t-att-value="request.csrf_token()"/>
+                        <div class="s_website_form_rows row s_col_no_bgcolor">
+                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto s_website_form_label"
+                                       style="width: 200px" for="studio1">
+                                    <span class="s_website_form_label_content">
+                                        Name
+                                    </span>
+                                    <span class="s_website_form_mark">*</span>
+                                </label>
+                                <div class="col-sm">
+                                    <select id="customer" name="customer"
+                                            class="form-control s_website_form_input"
+                                            required="1">
+                                        <option> </option>
+                                        <option t-foreach="customer" t-as="cust"
+                                                t-att-value="cust['id']"
+                                                t-out="cust['name']"/>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto s_website_form_label"
+                                       style="width: 200px" for="studio1">
+                                    <span class="s_website_form_label_content">
+                                        Date
+                                    </span>
+                                    <span class="s_website_form_mark">*</span>
+                                </label>
+                                <div class="col-sm">
+                                    <input id="date" type="date"
+                                           class="form-control s_website_form_input"
+                                           name="date" required="1"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class='row ml-1'
+                                     style="width:99%;">
+                                    <div class="form-group col-12 show_total_project">
+                                        <div class="row s_col_no_resize s_col_no_bgcolor">
+                                            <table class="table table-bordered mt-3 total_project_costs"
+                                                   id="material_table">
+                                                <thead>
+                                                    <tr>
+                                                        <td>
+                                                            <strong>
+                                                                Material *
+                                                            </strong>
+                                                        </td>
+                                                        <td>
+                                                            <strong>Quantity *
+                                                            </strong>
+                                                        </td>
+                                                        <td>
+                                                            <strong>Operation
+                                                                Type *
+                                                            </strong>
+                                                        </td>
+                                                        <td>
+                                                            <strong>Source
+                                                                location*
+                                                            </strong>
+                                                        </td>
+                                                        <td>
+                                                            <strong>Destination
+                                                                location*
+                                                            </strong>
+                                                        </td>
+
+
+                                                        <td width="5%"/>
+                                                    </tr>
+                                                </thead>
+                                                <div class="collapse">
+                                                    <tbody>
+                                                        <tr class="material_order_line">
+                                                            <td>
+                                                                <select id="product"
+                                                                        name="product"
+                                                                        class="form-control s_website_form_input">
+                                                                    <option></option>
+                                                                    <option t-foreach="products"
+                                                                            t-as="rec"
+                                                                            t-att-value="rec['id']"
+                                                                            t-out="rec['name']"/>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex">
+                                                                    <span class="mt-2"
+                                                                          style="margin-right: 0.5rem !important;"/>
+
+                                                                    <input placeholder="quantity"
+                                                                           type="number"
+                                                                           class="form-control total_cost"
+                                                                           name="quantity"
+                                                                           id="quantity"
+                                                                           value="1" />
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex">
+                                                                    <span class="mt-2"
+                                                                          style="margin-right: 0.5rem !important;"/>
+
+                                                                    <select id="operation_type"
+                                                                            name="operation"
+                                                                            class="form-control s_website_form_input operation">
+                                                                        <option></option>
+                                                                        <option>
+                                                                            internal
+                                                                            transfer
+                                                                        </option>
+                                                                        <option>
+                                                                            purchase
+                                                                            order
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex">
+                                                                    <span class="mt-2"
+                                                                          style="margin-right: 0.5rem !important;"/>
+
+                                                                    <select id="src_location"
+                                                                            name="source"
+                                                                            class="form-control s_website_form_input fields">
+                                                                        <option></option>
+                                                                        <option t-foreach="location"
+                                                                                t-as="recs"
+                                                                                t-att-value="recs['id']"
+                                                                                t-out="recs['name']"/>
+                                                                    </select>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex">
+                                                                    <span class="mt-2"
+                                                                          style="margin-right: 0.5rem !important;"/>
+
+                                                                    <select id="dest_location"
+                                                                            name="destination"
+                                                                            class="form-control s_website_form_input fields">
+                                                                        <option></option>
+                                                                        <option t-foreach="location"
+                                                                                t-as="recs"
+                                                                                t-att-value="recs['id']"
+                                                                                t-out="recs['name']"/>
+                                                                    </select>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <button class="btn fa fa-trash-o remove_line"
+                                                                        style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;"
+                                                                        name="delete"
+                                                                        aria-label="Delete row 1"/>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="add_extra_project d-none">
+                                                            <td>
+                                                                <select id="product"
+                                                                        name="product"
+                                                                        class="form-control">
+                                                                    <option></option>
+                                                                    <option t-foreach="products"
+                                                                            t-as="rec"
+                                                                            t-att-value="rec['id']"
+                                                                            t-out="rec['name']"/>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex">
+                                                                    <span class="mt-2"
+                                                                          style="margin-right: 0.5rem !important;"/>
+                                                                    <input placeholder="quantity"
+                                                                           type="number"
+                                                                           class="form-control total_cost"
+                                                                           name="quantity"
+                                                                           id="quantity"/>
+                                                                </div>
+
+
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex">
+                                                                    <span class="mt-2"
+                                                                          style="margin-right: 0.5rem !important;"/>
+
+                                                                    <select id="operation_type"
+                                                                            name="operation"
+                                                                            class="form-control operation">
+                                                                        <option></option>
+                                                                        <option>
+                                                                            internal
+                                                                            transfer
+                                                                        </option>
+                                                                        <option>
+                                                                            purchase
+                                                                            order
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex">
+                                                                    <span class="mt-2"
+                                                                          style="margin-right: 0.5rem !important;"/>
+
+                                                                    <select id="src_location"
+                                                                            name="source"
+                                                                            class="form-control s_website_form_input fields">
+                                                                        <option></option>
+                                                                        <option t-foreach="location"
+                                                                                t-as="recs"
+                                                                                t-att-value="recs['id']"
+                                                                                t-out="recs['name']"/>
+                                                                    </select>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex">
+                                                                    <span class="mt-2"
+                                                                          style="margin-right: 0.5rem !important;"/>
+
+                                                                    <select id="dest_location"
+                                                                            name="destination"
+                                                                            class="form-control s_website_form_input fields">
+                                                                        <option></option>
+                                                                        <option t-foreach="location"
+                                                                                t-as="recs"
+                                                                                t-att-value="recs['id']"
+                                                                                t-out="recs['name']"/>
+                                                                    </select>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <button type="button"
+                                                                        class="btn fa fa-trash-o remove_line"
+                                                                        style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;"
+                                                                        name="delete"
+                                                                        aria-label="Delete row 1"/>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </div>
+                                            </table>
+                                        </div>
+                                        <div>
+                                            <button type="button"
+                                                    class="btn btn-info add_total_project button-color"
+                                                    style="float: right; margin-right: -15px;">
+                                                <i class="fa fa-plus"/>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix oe_login_buttons">
+                                <button type="button"
+                                        class="custom_create btn btn-primary btn-block">
+                                    Create Request
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>
+
+

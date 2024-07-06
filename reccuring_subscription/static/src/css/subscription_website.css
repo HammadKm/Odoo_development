@@ -1,0 +1,45 @@
+.header{
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+.btn_submit{
+    padding:10px;
+    display: flex;
+    justify-content: center;
+    gap:10px;
+}
+table{
+    width:100%;
+    justify-content:center;
+    white-space: nowrap;
+}
+table th{
+	border-bottom: 1px solid black;
+	font-weight: bold;
+	font-family: Verdana;
+	white-space: nowrap;
+	padding-right: 10px;
+}
+.btn_create{
+    display:flex;
+    justify-content:center;
+}
+.buttons{
+    display: flex;
+    margin-left: auto;
+    gap: 10px;
+}
+.snippet{
+    display: flex;
+    justify-content: center;
+}
+.credits{
+    display:flex;
+    justify-content:center;
+}
+.form_row{
+    width:50%;
+}
+
