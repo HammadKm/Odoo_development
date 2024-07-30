@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_users_form" model="ir.ui.view">
+        <field name="name">res.config.settings.form.inherit.weather</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//setting[@id='module_auth_ldap']" position="after">
+                    <setting id="weather_notification"
+                             string="Weather Notification">
+                        <field name="weather"/>
+                        <div class="mt16" invisible="not weather">
+                            <label for="api_key"/>
+                            <field name="api_key" password="true"/>
+                        </div>
+                        <div class="mt16" invisible="not weather">
+                            <label for="location"/>
+                            <field name="location"/>
+                        </div>
+                    </setting>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem id="data_search_root" name="Data Search" action="action_data_search">
+<!--        <menuitem id="first_level_menu" name="Search" action="action_data_search"/>-->
+    </menuitem>
+</odoo>

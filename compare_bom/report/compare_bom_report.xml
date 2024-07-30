@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_report_compare_bom" model="ir.actions.report">
+            <field name="name">BOM Report</field>
+            <field name="model">mrp.bom</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">compare_bom.report_bom</field>
+            <field name="report_file">compare_bom.report_bom</field>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

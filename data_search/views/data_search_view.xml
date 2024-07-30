@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="action_data_search" model="ir.actions.act_window">
+        <field name="name">Data Search</field>
+        <field name="res_model">data.search</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+    </record>
+
+    <record id="data_search_info_form" model="ir.ui.view">
+        <field name="name">data.search.info.form</field>
+        <field name="model">data.search</field>
+        <field name="arch" type="xml">
+            <form string="data_search" create="false" >
+                <sheet>
+                    <div class="row oe_search_bgnd"
+                         style="padding: 24px 32px;border-radius: 5px;">
+                    <div class="col-12 col-md-8 col-xl-8">
+                    <label for="search" string="Search  "
+                           style="display: inline-block;"
+                           class="oe_read_only"/>
+                    <field name="search" default_focus="1"
+                           class="search_input"
+                           style="width: 80%; display: inline-block;margin-right: 0px;block-size: 32px;"
+                           placeholder="Type here to search.."/>
+                    <button name="action_clear_search"
+                            type="object" title="Search"
+                            class="fa fa-times oe_edit_only btn_master_search"/>
+                    <button name="action_search"
+                            type="object"
+                            title="Search"
+                            class="fa fa-search oe_search_btn btn_master_search oe_edit_only"/>
+                    </div>
+                    </div>
+
+                    <group>
+                        <group>
+                            <!--                                <field name="search"/>-->
+                            <field name="models_ids" widget="many2many_tags"/>
+                            <field name="field_id"/>
+                        </group>
+                    </group>
+                    <div class="oe_result_div">
+                        <div id="recent_searches" style="background-color: #5f5e97; color: #fff; width: 100%; padding: 5px 10px;
+                            margin-top: 10px; border-top-right-radius: 5px;border-top-left-radius: 5px;"
+                             class="oe_search_tab expand_tile">
+                            search results
+                            <div class="history" style="float: right;">
+<!--                                <field name="history_count"-->
+<!--                                       class="oe_tab_count" readonly="1"/>-->
+                                Records Found
+                                <span class="oe_drop_down">
+                                    <i style="color: #fff !important; font-size: 16px;"
+                                       title="Search"
+                                       class="fa fa-caret-down dropdown"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="height: 200px; overflow-y: scroll;width: 100%;"
+                             class="oe_details_tree">
+                            <field name="models_ids">
+                                <tree create="0" class="disable_open">
+                                    <field name="model"
+                                           class="re_search oe_key"/>
+                                    <field name="field_id" string="fields"
+                                           class="re_search"/>
+                                    <field name="count" string="Count"
+                                           class="re_search"/>
+<!--                                    <button style="display: inline-block;"-->
+<!--                                            name="action_unlink_search"-->
+<!--                                            title="Search" type="object"-->
+<!--                                            class="fa fa-trash"/>-->
+                                </tree>
+                            </field>
+                        </div>
+<!--                    <notebook>-->
+<!--                            <page string="Search results">-->
+<!--                            </page>-->
+<!--                    </notebook>-->
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

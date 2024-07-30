@@ -19,13 +19,8 @@ class ResConfigSettings(models.TransientModel):
                                            'percentage ', readonly=False,
                                       default=100)
 
-    # @api.onchange('discount_limit')
+    # @api.onchange('pos_session_discount_limit')
     # def _onchange_discount_limit(self):
-    #     print('lkj')
-    #     if self.discount_limit == 0:
-    #         print('kjfs')
-    #         raise UserError('invalid')
+    #     if self.pos_session_discount_limit == False:
+    #         self.pos_discount_limit = 0
 
-    #     print(self.discount_limit)
-    # else:
-    #     print('hello')

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="compare_bom_line_view_form" model="ir.ui.view">
+        <field name="name">compare.bom.wizard.form</field>
+        <field name="model">compare.product.bom</field>
+        <field name="arch" type="xml">
+            <form string="Choose the products">
+                <group>
+                    <field name="first_bom_id"/>
+                    <field name="second_bom_id"/>
+                </group>
+                <footer>
+                    <button name="action_compare_bom" string="Import"
+                            type="object"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_compare_bom_product" model="ir.actions.act_window">
+        <field name="name">Compare Product BOM</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">compare.product.bom</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="compare_bom_line_view_form"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

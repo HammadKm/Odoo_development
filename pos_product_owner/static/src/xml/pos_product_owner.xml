@@ -3,6 +3,7 @@
         <t t-name="pos_product_owner.Orderline" t-inherit="point_of_sale.Orderline"
            t-inherit-mode="extension">
                 <xpath expr="//div" position="after">
+
 <!--                        <t t-log="line.owner"/>-->
                         <t t-if="line.owner">
                                 <div><span>owner:</span><t t-esc="line.owner"/></div>

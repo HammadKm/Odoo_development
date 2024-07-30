@@ -1,0 +1,54 @@
+<odoo>
+    <template id="report_bom">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <center>
+                        <h2>BOM Report</h2>
+                    </center>
+                </div>
+                <br/>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Bom 1</th>
+                            <th>Total Cost Bom1</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span t-esc="data['bom1']"/>
+                            </td>
+                            <td>
+                                <span t-esc="data['total_cost_bom1']"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Bom 2</th>
+                            <th>Total Cost Bom2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span t-esc="data['bom2']"/>
+                            </td>
+                            <td>
+                                <span t-esc="data['total_cost_bom2']"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>PROFITABLE BOM:
+                    <span t-esc="data['profit']"/>
+                </p>
+            </t>
+        </t>
+    </template>
+</odoo>

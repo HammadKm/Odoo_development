@@ -6,7 +6,8 @@
         <field name="inherit_id" ref="point_of_sale.view_pos_session_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='cash_register_balance_start']" position="after">
-                <field name="discount_limit"/>
+                <field name="session_discount_limit"/>
+                <field name="discount_limit" />
             </xpath>
         </field>
     </record>
